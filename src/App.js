@@ -5,6 +5,7 @@ import TableComp from './components/Table/TableComp';
 import RootStoreContext from './Store/RootStore';
 import dayjs from 'dayjs';
 import { Box, Stack, Typography } from '@mui/material';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const { tableStore } = useContext(RootStoreContext)
@@ -73,15 +74,16 @@ function App() {
 
   return (
     <React.Fragment>
-      <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
-        <img src="https://img.icons8.com/fluency/48/000000/group-of-fruits.png" alt='' style={{ margin: '16px' }} />
-        <Typography variant='subtitle1' fontWeight={'500'}>Fruits Company</Typography>
+      <Box display={'flex'} flexDirection={'row'} alignItems={'center'} marginBottom={8}>
+        <img src="https://img.icons8.com/3d-fluency/48/000000/shop.png" alt='Logo' style={{ marginLeft: '16px' }} />
+        <Typography variant='h6' fontWeight={'500'} sx={{ marginLeft: '16px' }}>Fruits Company</Typography>
       </Box>
       <Typography variant='h5' sx={{ marginLeft: '16px' }}>Registros de Produtos</Typography>
 
       <ModalComp name={name} name1={name1} quantity={quantity} quantity1={quantity1} product={product} product1={product1} onChangeName={onChangeName} onChangeName1={onChangeName1} onChangeQuantity={onChangeQuantity} onChangeQuantity1={onChangeQuantity1}
         onChangeProduct={onChangeProduct} onChangeProduct1={onChangeProduct1} handleSave={handleSave} handleClose={handleClose} handleClickOpen={handleClickOpen} handleChange={handleChange} value={value} open={open} />
       {tableStore.state.name !== '' ? <TableComp /> : <Typography variant='subtitle2' textAlign={'center'}> Nenhum Registro Encontrado</Typography>}
+      <Footer />
     </React.Fragment>
   );
 }

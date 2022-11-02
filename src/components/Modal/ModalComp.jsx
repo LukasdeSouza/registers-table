@@ -11,7 +11,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SaveIcon from '@mui/icons-material/Save';
 import DatePickerJsx from '../DatePicker/datePicker';
-import { IconButton } from '@mui/material';
+import { IconButton, Stack } from '@mui/material';
 
 export default function ModalComp({ value, name, quantity, product, name1, quantity1, product1, onChangeName, onChangeName1, onChangeQuantity, onChangeQuantity1, onChangeProduct, onChangeProduct1, handleSave, handleClose, handleClickOpen, handleChange, open }) {
 
@@ -20,10 +20,13 @@ export default function ModalComp({ value, name, quantity, product, name1, quant
   return (
     <div>
       <Button variant="contained" onClick={handleClickOpen} sx={{ m: 2, backgroundColor: '#eb8201' }}>
-        <AddIcon sx={{ mr: 1 }} /> Adicionar Registro
+        <AddIcon sx={{ mr: 1 }} /> Adicionar Produto
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Novos Registros</DialogTitle>
+        <Stack display={'flex'} flexDirection={'row'} alignItems={'center'} justifyContent={'space-between'}>
+          <DialogTitle>Novos Registros</DialogTitle>
+          <Button onClick={handleClose}><img src="https://img.icons8.com/3d-fluency/24/000000/close-window.png" /></Button>
+        </Stack>
         <DialogContent>
           <DialogContentText>
             Insira quantos registros achar necessário
@@ -77,10 +80,10 @@ export default function ModalComp({ value, name, quantity, product, name1, quant
 
         </DialogContent>
         <DialogActions sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'end' }}>
-          <Button onClick={handleClose} sx={{ mr: 2, mb: 2 }}><ArrowBackIcon sx={{ mr: 1 }} />Voltar</Button>
+          <Button onClick={handleClose} sx={{ mr: 13, mb: 2 }}><ArrowBackIcon sx={{ mr: 1 }} />Voltar</Button>
           <IconButton onClick={() => newRegisters(true)} sx={{ mr: 2, mb: 2 }} variant='contained' ><AddIcon /></IconButton>
           <IconButton onClick={() => newRegisters(false)} sx={{ mr: 2, mb: 2 }} variant='contained' color='warning'><RemoveIcon /></IconButton>
-          <Button variant='contained' onClick={handleSave} sx={{ mr: 2, mb: 2, backgroundColor: "#12934f" }}>Salvar<SaveIcon /></Button>
+          <Button variant='contained' onClick={handleSave} sx={{ mr: 2, mb: 2, backgroundColor: "#12934f" }}>Salvar<SaveIcon sx={{ ml: 1 }} /></Button>
         </DialogActions>
       </Dialog>
     </div>

@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import RootStoreContext from '../../Store/RootStore';
-import { Button } from '@mui/material';
+import { Button, IconButton, Typography } from '@mui/material';
 import SaveIcon from '@mui/icons-material/Save';
 
 export default function TableComp() {
@@ -27,12 +27,12 @@ export default function TableComp() {
         <Table sx={{ minWidth: 650 }} aria-label="simple table" >
           <TableHead>
             <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell align="right">Nome</TableCell>
-              <TableCell align="right">Data</TableCell>
-              <TableCell align="right">Horário</TableCell>
-              <TableCell align="right">Produto</TableCell>
-              <TableCell align="right">Quantidade</TableCell>
+              <TableCell><img src="https://img.icons8.com/3d-fluency/32/000000/document.png" alt='Id' /></TableCell>
+              <TableCell align="right"><img src="https://img.icons8.com/3d-fluency/36/000000/user-male.png" alt='Nome' /></TableCell>
+              <TableCell align="right"><img src="https://img.icons8.com/emoji/36/000000/spiral-calendar-emoji.png" alt='Data' /></TableCell>
+              <TableCell align="right"><img src="https://img.icons8.com/3d-fluency/36/000000/clock.png" alt='Horário' /></TableCell>
+              <TableCell align="right"><img src="https://img.icons8.com/3d-fluency/36/000000/grapes.png" alt='Produto' /></TableCell>
+              <TableCell align="right"><img src="https://img.icons8.com/3d-fluency/36/000000/coins.png" alt='Quantidade' /></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -63,7 +63,10 @@ export default function TableComp() {
           </TableBody>
         </Table>
       </TableContainer>
-      <Button variant='contained' sx={{ m: 2, backgroundColor: "#12934f" }}><SaveIcon sx={{ mr: 1 }} />Salvar Registros</Button>
+      <Button variant='contained' sx={{ m: 2, backgroundColor: '#6bacdc' }}><img src="https://img.icons8.com/3d-fluency/36/000000/save.png" style={{ marginRight: '8px' }} />
+        <Typography variant='subtitle2'>Salvar Todos os Registros</Typography>
+      </Button>
+
     </React.Fragment>
   );
 }
