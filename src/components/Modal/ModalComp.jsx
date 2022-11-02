@@ -10,17 +10,16 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SaveIcon from '@mui/icons-material/Save';
-import DatePickerJsx from '../DatePicker/datePicker';
-import { IconButton, Stack } from '@mui/material';
+import { IconButton, Stack, Typography } from '@mui/material';
 
-export default function ModalComp({ value, name, quantity, product, name1, quantity1, product1, onChangeName, onChangeName1, onChangeQuantity, onChangeQuantity1, onChangeProduct, onChangeProduct1, handleSave, handleClose, handleClickOpen, handleChange, open }) {
+export default function ModalComp({ value, name, quantity, product, name1, quantity1, name2, quantity2, product2, product1, onChangeName, onChangeName1, onChangeName2, onChangeQuantity, onChangeQuantity1, onChangeQuantity2, onChangeProduct, onChangeProduct1, onChangeProduct2, handleSave, handleClose, handleClickOpen, handleChange, open }) {
 
   const [registers, newRegisters] = React.useState(false)
 
   return (
     <div>
-      <Button variant="contained" onClick={handleClickOpen} sx={{ m: 2, backgroundColor: '#eb8201' }}>
-        <AddIcon sx={{ mr: 1 }} /> Adicionar Produto
+      <Button variant="contained" onClick={handleClickOpen} sx={{ m: 2, backgroundColor: '#fd2d3d' }}>
+        <img src="https://img.icons8.com/3d-fluency/36/000000/nui2.png" alt='Adicionar' style={{ marginRight: '8px' }} /> Adicionar Produto
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <Stack display={'flex'} flexDirection={'row'} alignItems={'center'} justifyContent={'space-between'}>
@@ -29,7 +28,7 @@ export default function ModalComp({ value, name, quantity, product, name1, quant
         </Stack>
         <DialogContent>
           <DialogContentText>
-            Insira quantos registros achar necessário
+            <Typography variant='subtitle2'>Obs: Máximo de 3 Registros</Typography>
           </DialogContentText>
           <TextField
             autoFocus
@@ -56,7 +55,6 @@ export default function ModalComp({ value, name, quantity, product, name1, quant
             value={product}
             onChange={onChangeProduct}
           />
-          <DatePickerJsx value={value} handleChange={handleChange} />
           <TextField
             autoFocus
             margin="dense"
@@ -74,16 +72,27 @@ export default function ModalComp({ value, name, quantity, product, name1, quant
               <TextField autoFocus margin='dense' label='Seu Nome' type='text' fullWidth variant='outlined' value={name1} onChange={onChangeName1} />
               <TextField autoFocus margin='dense' label='Produto' type='text' fullWidth variant='outlined' value={product1} onChange={onChangeProduct1} />
               <TextField autoFocus margin='dense' label='Quantidade' type='number' fullWidth variant='outlined' value={quantity1} onChange={onChangeQuantity1} />
+              <TextField autoFocus margin='dense' label='Seu Nome' type='text' fullWidth variant='outlined' value={name2} onChange={onChangeName2} />
+              <TextField autoFocus margin='dense' label='Produto' type='text' fullWidth variant='outlined' value={product2} onChange={onChangeProduct2} />
+              <TextField autoFocus margin='dense' label='Quantidade' type='number' fullWidth variant='outlined' value={quantity2} onChange={onChangeQuantity2} />
             </>
 
             : ''}
 
         </DialogContent>
         <DialogActions sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'end' }}>
-          <Button onClick={handleClose} sx={{ mr: 13, mb: 2 }}><ArrowBackIcon sx={{ mr: 1 }} />Voltar</Button>
-          <IconButton onClick={() => newRegisters(true)} sx={{ mr: 2, mb: 2 }} variant='contained' ><AddIcon /></IconButton>
-          <IconButton onClick={() => newRegisters(false)} sx={{ mr: 2, mb: 2 }} variant='contained' color='warning'><RemoveIcon /></IconButton>
-          <Button variant='contained' onClick={handleSave} sx={{ mr: 2, mb: 2, backgroundColor: "#12934f" }}>Salvar<SaveIcon sx={{ ml: 1 }} /></Button>
+          <Button onClick={handleClose} sx={{ mr: 8, mb: 2 }}>
+            <ArrowBackIcon sx={{ mr: 1 }} />Voltar
+          </Button>
+          <IconButton onClick={() => newRegisters(true)} sx={{ mr: 2, mb: 2 }} variant='contained' >
+            <AddIcon sx={{ mr: 1 }} />
+            <Typography variant='subtitle2'>Produtos</Typography>
+          </IconButton>
+          <IconButton onClick={() => newRegisters(false)} sx={{ mr: 2, mb: 2 }} variant='contained' color='warning'>
+            <RemoveIcon />
+            <Typography variant='subtitle2'>Produtos</Typography>
+          </IconButton>
+          <Button variant='contained' onClick={handleSave} sx={{ mr: 4, mb: 2, backgroundColor: "#12934f" }}>Salvar<SaveIcon sx={{ ml: 1 }} /></Button>
         </DialogActions>
       </Dialog>
     </div>

@@ -12,12 +12,15 @@ function App() {
 
   const [open, setOpen] = useState(false)
 
-  const [name, setName] = useState([]);
+  const [name, setName] = useState('');
   const [name1, setName1] = useState('');
-  const [quantity, setQuantity] = useState([]);
+  const [name2, setName2] = useState('');
+  const [quantity, setQuantity] = useState('');
   const [quantity1, setQuantity1] = useState('');
-  const [product, setProduct] = useState([])
+  const [quantity2, setQuantity2] = useState('');
+  const [product, setProduct] = useState('')
   const [product1, setProduct1] = useState('')
+  const [product2, setProduct2] = useState('')
 
   const onChangeName = (e) => {
     setName(e.target.value)
@@ -27,11 +30,18 @@ function App() {
     setName1(e.target.value)
     console.log(name)
   }
+  const onChangeName2 = (e) => {
+    setName2(e.target.value)
+    console.log(name)
+  }
   const onChangeQuantity = (e) => {
     setQuantity(e.target.value)
   }
   const onChangeQuantity1 = (e) => {
     setQuantity1(e.target.value)
+  }
+  const onChangeQuantity2 = (e) => {
+    setQuantity2(e.target.value)
   }
   const onChangeProduct = (e) => {
     setProduct(e.target.value)
@@ -39,17 +49,22 @@ function App() {
   const onChangeProduct1 = (e) => {
     setProduct1(e.target.value)
   }
+  const onChangeProduct2 = (e) => {
+    setProduct2(e.target.value)
+  }
   const handleSave = () => {
     tableStore.setState('id', Math.floor(Math.random() * 100))
-    tableStore.setState('name', name)
-    // tableStore.setState('date', value)
-    tableStore.setState('product', product)
-    tableStore.setState('quantity', quantity)
     tableStore.setState('id1', Math.floor(Math.random() * 100))
+    tableStore.setState('id2', Math.floor(Math.random() * 100))
+    tableStore.setState('name', name)
     tableStore.setState('name1', name1)
+    tableStore.setState('name2', name2)
+    tableStore.setState('product', product)
     tableStore.setState('product1', product1)
+    tableStore.setState('product2', product2)
+    tableStore.setState('quantity', quantity)
     tableStore.setState('quantity1', quantity1)
-    alert(tableStore.state.name)
+    tableStore.setState('quantity2', quantity2)
 
     if (name !== '' && quantity !== '') {
       alert('Registro criado com Sucesso')
@@ -80,9 +95,9 @@ function App() {
       </Box>
       <Typography variant='h5' sx={{ marginLeft: '16px' }}>Registros de Produtos</Typography>
 
-      <ModalComp name={name} name1={name1} quantity={quantity} quantity1={quantity1} product={product} product1={product1} onChangeName={onChangeName} onChangeName1={onChangeName1} onChangeQuantity={onChangeQuantity} onChangeQuantity1={onChangeQuantity1}
-        onChangeProduct={onChangeProduct} onChangeProduct1={onChangeProduct1} handleSave={handleSave} handleClose={handleClose} handleClickOpen={handleClickOpen} handleChange={handleChange} value={value} open={open} />
-      {tableStore.state.name !== '' ? <TableComp /> : <Typography variant='subtitle2' textAlign={'center'}> Nenhum Registro Encontrado</Typography>}
+      <ModalComp name={name} name1={name1} name2={name2} quantity={quantity} quantity1={quantity1} quantity2={quantity2} product={product} product1={product1} product2={product2} onChangeName={onChangeName} onChangeName1={onChangeName1} onChangeName2={onChangeName2} onChangeQuantity={onChangeQuantity} onChangeQuantity1={onChangeQuantity1} onChangeQuantity2={onChangeQuantity2}
+        onChangeProduct={onChangeProduct} onChangeProduct1={onChangeProduct1} onChangeProduct2={onChangeProduct2} handleSave={handleSave} handleClose={handleClose} handleClickOpen={handleClickOpen} handleChange={handleChange} value={value} open={open} />
+      {tableStore.state.name !== '' ? <TableComp /> : <Typography variant='subtitle2' textAlign={'center'}> Desculpe! Nenhum Registro foi Encontrado.</Typography>}
       <Footer />
     </React.Fragment>
   );

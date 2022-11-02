@@ -3,14 +3,17 @@ import { action, makeAutoObservable, observable } from "mobx"
 class TableStore {
   state = {
     id: '',
-    name: '',
-    date: '',
-    product: '',
-    quantity: '',
     id1: '',
+    id2: '',
+    name: '',
     name1: '',
+    name2: '',
+    product: '',
     product1: '',
+    product2: '',
+    quantity: '',
     quantity1: '',
+    quantity2: '',
     alert: false
   }
 
