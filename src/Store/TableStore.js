@@ -4,6 +4,7 @@ class TableStore {
   state = {
     id: '',
     name: '',
+    date: '',
     product: '',
     quantity: '',
     id1: '',

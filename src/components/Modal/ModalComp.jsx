@@ -6,16 +6,21 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { InputAdornment, Stack } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import SaveIcon from '@mui/icons-material/Save';
+import DatePickerJsx from '../DatePicker/datePicker';
+import { IconButton } from '@mui/material';
 
-export default function ModalComp({ name, quantity, product, name1, quantity1, product1, onChangeName, onChangeName1, onChangeQuantity, onChangeQuantity1, onChangeProduct, onChangeProduct1, handleSave, handleClose, handleClickOpen, open }) {
+export default function ModalComp({ value, name, quantity, product, name1, quantity1, product1, onChangeName, onChangeName1, onChangeQuantity, onChangeQuantity1, onChangeProduct, onChangeProduct1, handleSave, handleClose, handleClickOpen, handleChange, open }) {
 
   const [registers, newRegisters] = React.useState(false)
 
   return (
     <div>
-      <Button variant="contained" onClick={handleClickOpen}>
-        Criar Registro
+      <Button variant="contained" onClick={handleClickOpen} sx={{ m: 2, backgroundColor: '#eb8201' }}>
+        <AddIcon sx={{ mr: 1 }} /> Adicionar Registro
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Novos Registros</DialogTitle>
@@ -48,6 +53,7 @@ export default function ModalComp({ name, quantity, product, name1, quantity1, p
             value={product}
             onChange={onChangeProduct}
           />
+          <DatePickerJsx value={value} handleChange={handleChange} />
           <TextField
             autoFocus
             margin="dense"
@@ -71,10 +77,10 @@ export default function ModalComp({ name, quantity, product, name1, quantity1, p
 
         </DialogContent>
         <DialogActions sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'end' }}>
-          <Button onClick={handleClose} sx={{ mr: 2, mb: 2 }}>Voltar</Button>
-          <Button onClick={() => newRegisters(true)} sx={{ mr: 2, mb: 2 }} variant='contained' >Adicionar +</Button>
-          <Button onClick={() => newRegisters(false)} sx={{ mr: 2, mb: 2 }} variant='contained' color='warning'>Reduzir -</Button>
-          <Button variant='contained' onClick={handleSave} sx={{ mr: 2, mb: 2 }} color='success'>Salvar</Button>
+          <Button onClick={handleClose} sx={{ mr: 2, mb: 2 }}><ArrowBackIcon sx={{ mr: 1 }} />Voltar</Button>
+          <IconButton onClick={() => newRegisters(true)} sx={{ mr: 2, mb: 2 }} variant='contained' ><AddIcon /></IconButton>
+          <IconButton onClick={() => newRegisters(false)} sx={{ mr: 2, mb: 2 }} variant='contained' color='warning'><RemoveIcon /></IconButton>
+          <Button variant='contained' onClick={handleSave} sx={{ mr: 2, mb: 2, backgroundColor: "#12934f" }}>Salvar<SaveIcon /></Button>
         </DialogActions>
       </Dialog>
     </div>

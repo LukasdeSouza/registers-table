@@ -8,7 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import RootStoreContext from '../../Store/RootStore';
 import { Button } from '@mui/material';
-import { AppContext } from '../../App';
+import SaveIcon from '@mui/icons-material/Save';
 
 export default function TableComp() {
 
@@ -23,8 +23,8 @@ export default function TableComp() {
 
   return (
     <React.Fragment>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <TableContainer component={Paper} sx={{ boxShadow: 5 }}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table" >
           <TableHead>
             <TableRow>
               <TableCell>ID</TableCell>
@@ -43,8 +43,8 @@ export default function TableComp() {
                 {tableStore.state.id}
               </TableCell>
               <TableCell align="right">{tableStore.state.name}</TableCell>
-              <TableCell align="right">{dateString}</TableCell>
-              <TableCell align="right">Horário</TableCell>
+              <TableCell align="right"></TableCell>
+              <TableCell align="right"></TableCell>
               <TableCell align="right">{tableStore.state.product}</TableCell>
               <TableCell align="right">{tableStore.state.quantity}</TableCell>
             </TableRow>
@@ -55,15 +55,15 @@ export default function TableComp() {
                 {tableStore.state.id1}
               </TableCell>
               <TableCell align="right">{tableStore.state.name1}</TableCell>
-              <TableCell align="right">{dateString}</TableCell>
-              <TableCell align="right">Horário</TableCell>
+              <TableCell align="right"></TableCell>
+              <TableCell align="right"></TableCell>
               <TableCell align="right">{tableStore.state.product1}</TableCell>
               <TableCell align="right">{tableStore.state.quantity1}</TableCell>
             </TableRow>
           </TableBody>
         </Table>
       </TableContainer>
-      <Button variant='contained' color='success' sx={{ mt: 2 }}>Salvar Registros</Button>
+      <Button variant='contained' sx={{ m: 2, backgroundColor: "#12934f" }}><SaveIcon sx={{ mr: 1 }} />Salvar Registros</Button>
     </React.Fragment>
   );
 }
