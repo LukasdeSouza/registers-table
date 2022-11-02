@@ -17,23 +17,13 @@ export default function TableComp() {
   const navigate = useNavigate();
 
   const [deleteTrigger, setDeleteTrigger] = React.useState(false)
-
-  const nothing = ''
+  const [showAll, setShowAll] = React.useState(true)
 
   const deleteAll = () => {
-    tableStore.setState('id', nothing)
-    tableStore.setState('id1', nothing)
-    tableStore.setState('id2', nothing)
-    tableStore.setState('name', nothing)
-    tableStore.setState('name1', nothing)
-    tableStore.setState('name2', nothing)
-    tableStore.setState('product', nothing)
-    tableStore.setState('product1', nothing)
-    tableStore.setState('product2', nothing)
-    tableStore.setState('quantity', nothing)
-    tableStore.setState('quantity1', nothing)
-    tableStore.setState('quantity2', nothing)
+    setShowAll(false)
+    setDeleteTrigger(false)
   }
+
 
   const currentDate = new Date();
   const currentDayOfMonth = currentDate.getDate();
@@ -44,7 +34,7 @@ export default function TableComp() {
 
   return (
     <React.Fragment>
-      <TableContainer component={Paper} sx={{ boxShadow: 5 }}>
+      {showAll && <TableContainer component={Paper} sx={{ boxShadow: 5 }}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table" >
           <TableHead>
             <TableRow>
@@ -100,7 +90,66 @@ export default function TableComp() {
 
           </TableBody>
         </Table>
-      </TableContainer>
+      </TableContainer>}
+
+      {/* <TableContainer component={Paper} sx={{ boxShadow: 5 }}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table" >
+          <TableHead>
+            <TableRow>
+              <TableCell><img src="https://img.icons8.com/3d-fluency/32/000000/document.png" alt='Id' /></TableCell>
+              <TableCell align="center"><img src="https://img.icons8.com/3d-fluency/36/000000/user-male.png" alt='Nome' /></TableCell>
+              <TableCell align="center"><img src="https://img.icons8.com/3d-fluency/36/000000/grapes.png" alt='Produto' /></TableCell>
+              <TableCell align="center"><img src="https://img.icons8.com/3d-fluency/36/000000/coins.png" alt='Quantidade' /></TableCell>
+              <TableCell align="center"><img src="https://img.icons8.com/3d-fluency/36/000000/edit.png" alt='Editar' /></TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {tableStore.state.id}
+              </TableCell>
+              <TableCell align="center">{tableStore.state.name}</TableCell>
+              <TableCell align="center">{tableStore.state.product}</TableCell>
+              <TableCell align="center">{tableStore.state.quantity}</TableCell>
+              <TableCell align="center" sx={{ cursor: "pointer" }} onClick={() => navigate(`/edit/${tableStore.state.id}`)}>
+                <img src="https://img.icons8.com/ios-filled/20/000000/edit--v1.png" alt='Editar' />
+              </TableCell>
+            </TableRow>
+
+            {tableStore.state.name1 !== '' ? <TableRow
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {tableStore.state.id1}
+              </TableCell>
+              <TableCell align="center">{tableStore.state.name1}</TableCell>
+              <TableCell align="center">{tableStore.state.product1}</TableCell>
+              <TableCell align="center">{tableStore.state.quantity1}</TableCell>
+              <TableCell align="center" sx={{ cursor: "pointer" }} onClick={() => navigate(`/edit/${tableStore.state.id1}`)}>
+                <img src="https://img.icons8.com/ios-filled/20/000000/edit--v1.png" alt='Editar' />
+              </TableCell>
+            </TableRow> : ''}
+
+            {tableStore.state.name2 !== '' ? <TableRow
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {tableStore.state.id2}
+              </TableCell>
+              <TableCell align="center">{tableStore.state.name2}</TableCell>
+              <TableCell align="center">{tableStore.state.product2}</TableCell>
+              <TableCell align="center">{tableStore.state.quantity2}</TableCell>
+              <TableCell align="center" sx={{ cursor: "pointer" }} onClick={() => navigate(`/edit/${tableStore.state.id2}`)}>
+                <img src="https://img.icons8.com/ios-filled/20/000000/edit--v1.png" alt='Editar' />
+              </TableCell>
+            </TableRow> : ''}
+
+          </TableBody>
+        </Table>
+      </TableContainer> */}
+
       {deleteTrigger === false &&
         <Button variant='contained'
           sx={{ m: 2, backgroundColor: '#6bacdc' }}
@@ -116,9 +165,6 @@ export default function TableComp() {
           onClick={() => deleteAll()}>
           Realmente Deseja Excluir ?
         </Button>}
-      {tableStore.state.name}
-
-
 
     </React.Fragment>
   );
